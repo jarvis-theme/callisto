@@ -43,7 +43,7 @@
 						<textarea name='alamat' class="textarea-1" required>{{Input::old("alamat")}}</textarea>
 					</p>
 					<p>
-						<label>Negara*:</label>						  	
+						<label>Negara*:</label>
 						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara,Input::old("provinsi"),array('required', 'id="negara" data-rel="chosen"'))}}
 					</p>
 					<p>
@@ -68,7 +68,7 @@
 						<input type="text" name='telp' value='{{Input::old("telp")}}' required class="input-text-1" />
 					</p>
 					<p>
-						<label>Captcha</label>
+						<label>Captcha*</label>
 						{{ HTML::image(Captcha::img(), 'Captcha image') }}
 					</p>
 					<p>

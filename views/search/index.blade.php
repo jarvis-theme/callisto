@@ -119,17 +119,16 @@
 												</tr>
 											</table>
 										</div>
-										<a href="#">{{imageProduk($item,array('width'=>94,'height'=>94))}}</a>
+										<a href="#">{{imageProduk($item, array('style'=>'width:94px; height:94px;'))}}</a>
 									</div>
 								</div>
 								<div class="text">
-									<h3><a href="#" class="custom-font-1">{{$item->nama}}</a></h3>
+									<h3><a href="#" class="custom-font-1">{{shortDescription($item->nama, 15)}}</a></h3>
 									<p><b class="custom-font-1">{{jadiRupiah($item->hargaJual)}}</b></p>
 									<a href="{{slugProduk($item)}}" class="more-link">Lihat</a>
 								</div>
 							</div>
-							@endforeach
-
+							@endforeach	
 
 							<div class="clear"></div>
 
@@ -163,17 +162,16 @@
 												</tr>
 											</table>
 										</div>
-										<a href="#">{{imageProduk($item,array('width'=>94,'height'=>94))}}</a>
+										<a href="#">{{imageProduk($item,array('style'=>'width:94px;height:94px;'))}}</a>
 									</div>
 								</div>
 								<div class="text">
-									<h3><a href="#" class="custom-font-1">{{$item->nama}}</a></h3>
+									<h3><a href="#" class="custom-font-1">{{shortDescription($item->nama, 15)}}</a></h3>
 									<p><b class="custom-font-1">{{jadiRupiah($item->hargaJual)}}</b></p>
 									<a href="{{slugProduk($item)}}" class="more-link">Lihat</a>
 								</div>
 							</div>
-							@endforeach
-
+							@endforeach	
 
 							<div class="clear"></div>
 

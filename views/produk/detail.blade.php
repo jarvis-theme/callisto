@@ -5,7 +5,9 @@
 		<p class="" style="font-size: large;">
 			{{breadcrumbProduk($produk,'; <span>/</span>',';',true)}}
 		</p>
+		<!-- <a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{slugProduk($produk)}}" class="share">tweet this item</a> -->
 		<a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{slugProduk($produk)}}" class="share">share this item</a>
+		<!-- <a href="http://twitter.com/home/?status=Twitter is like the lunch meeting with potential clients before you do the pitch. via @blogtyrant">tweet this </a> -->
 	</div>
 
 	<div class="main-image">
@@ -82,7 +84,9 @@
 		<div class="price custom-font-1" >
 			<div style="width: auto">
 				<p>{{ jadiRUpiah($produk->hargaJual) }}</p>
+				@if($produk->hargaCoret != 0)
 				<p><s>{{ jadiRUpiah($produk->hargaCoret) }}</s></p>
+				@endif
 			</div>
 			
 			<div class="clear"></div>
@@ -119,11 +123,8 @@
 				<div class="item">
 					<button class="button-3 custom-font-1 trans-1 add_cart"><span>Masukan ke Keranjang</span></button>
 				</div>
-				
 			</form>
-			
 		</div>
-
 		
 		<div class="description">
 			<div class="button-navigation custom-font-1">

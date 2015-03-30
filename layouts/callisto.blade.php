@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         {{ Theme::partial('seostuff') }}    
-        <meta charset="utf-8">
+        <meta charset="utf-8"><!--
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
         {{ Theme::partial('defaultcss') }}  
         {{ Theme::asset()->styles() }}  
     </head>
@@ -20,7 +20,7 @@
 
             {{ Theme::partial('footer') }}  
             {{ Theme::partial('defaultjs') }}   
-	        {{ Theme::asset()->scripts() }}    
+	        {{-- Theme::asset()->scripts() --}}    
             {{ Theme::asset()->container('footer')->scripts() }}    
         </div>
         {{ Theme::partial('analytic') }}    

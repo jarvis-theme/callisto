@@ -18,7 +18,7 @@
 
 					<div class="comments-wrapper">
 						{{$fbscript}}
-						{{$fbcomment}}
+						{{fbcommentbox(blog_url($detailblog), 600, 10, 'light')}}
 					</div>
 
 					<div class="pages custom-font-1">
@@ -81,7 +81,6 @@
 									<h3><a href="#" class="custom-font-1">{{$recent->judul}}</a></h3>
 									<div class="title-legend">
 										<a href="#" class="date">{{waktu($recent->updated_at)}}</a>
-										
 									</div>
 									<a href="{{URL::to('blog/'.$recent->slug)}}" class="more-link">Read more</a>
 								</div>
@@ -91,8 +90,6 @@
 
 					<!-- END .recent-activity -->
 					</div>
-
-					
 
 				<!-- END .main-sidebar-wrapper -->
 				</div>
