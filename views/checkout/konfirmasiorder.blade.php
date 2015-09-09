@@ -1,29 +1,20 @@
-@if(Session::has('success'))
-<div class="success" id='message' style='display:none'>
-	<p>Terima kasih, konfirmasi anda sudah terkirim.</p>					
-</div>		
-@endif
-
 <div class="single-full-width customer customer-order">
-
 	<div class="main-title">
-		<p class="custom-font-1"><a href="#"><a href="#" class="active">Konfirmasi Order</a></p>
+		<p class="custom-font-1"><a href="#" class="active">Konfirmasi Order</a></p>
 		<a href="{{URL::previous()}}" class="continue">Kembali</a>
 	</div>
 	
 	<div class="main-content item-block-3">
 		<div class="content">
-
 			<div class="order-history">
 				<div class="row title">
 					<div class="sku">Kode Order</div>
 					<div class="sku">Tanggal Order</div>
 					<div class="price">Order</div>
+					<div class="total">Jumlah</div>
 					<div class="price">Jumlah yg belum di bayar</div>
-					<div class="total"> Jumlah</div>
-					<div class="total">No Resi</div>
+					<div class="total">&nbsp;No Resi</div>
 					<div class="total">Status</div>
-
 				</div>
 				<div class="row">
 					<div class="sku">{{prefixOrder().$order->kodeOrder}}</div>
@@ -33,8 +24,8 @@
 							<li>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</li>
 						@endforeach	
 					</div>
-					<div class="price">{{jadiRupiah($order->total)}}</div>
-					<div class="total">- {{($order->status==2 || $order->status==3) ? jadiRupiah(0) : jadiRupiah($order->total)}}</div>
+					<div class="price">{{price($order->total)}}</div>
+					<div class="total">- {{($order->status==2 || $order->status==3) ? price(0) : price($order->total)}}</div>
 					<div class="total">
 						@if($order->noResi!="")
 							{{$order->noResi}}
@@ -50,14 +41,13 @@
 						@elseif($order->status==2)
 						<span class="label label-info">Pembayaran diterima</span>
 						@elseif($order->status==3)
-						<span class="label label-info">Terkirim</span>
+						<span class="label label-success">Terkirim</span>
 						@elseif($order->status==4)
-						<span class="label label-info">Batal</span>
+						<span class="label label-default">Batal</span>
 						@endif
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<div class="contact-form">
@@ -70,8 +60,8 @@
             	<label>Rekening Tujuan:</label>
             	<select name='bank'>
 					<option value=''>-- Pilih Bank Tujuan --</option>
-					@foreach ($banktrans as $bank)
-						<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
+					@foreach (list_banks() as $bank)
+					<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
 					@endforeach
 				</select>
             </p>	

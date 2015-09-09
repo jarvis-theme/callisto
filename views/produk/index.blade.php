@@ -1,18 +1,17 @@
 <!-- BEGIN .catalog -->
 <div class="catalog">
-
 	<div class="main-title">
-		
-			@if(!empty($kategoridetail))
-                <p class="">
-					{{breadcrumbProduk(null,'; <span>/</span>',';', true, $kategoridetail)}}
-				</p>
-            @else
-            <ul style="float:left" class="breadcurm">
-                <li><a>Produk</a></li>
-            </ul>
-            @endif
-		
+		@if(!empty($kategoridetail))
+            <p>
+				<a href="{{url('home')}}">Home</a>{{breadcrumbProduk(null,'; <span>/</span>',';', true, $kategoridetail)}}
+			</p>
+        @else
+        <ul style="float:left" class="breadcurm">
+        	<li><a href="{{url('home')}}">Home</a></li>
+        	<li><a>/</a></li>
+            <li><a>Produk</a></li>
+        </ul>
+        @endif
 
 		<!-- <a href="#" class="grid-2">4 column view</a>
 		<a href="#" class="grid-1">3 column view</a> -->
@@ -24,11 +23,8 @@
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
 				<option>Semua produk</option>
 				@foreach($kategori as $value)
-				<option value="{{URL::to(strtolower('category/'.generateSlug($value)))}}">{{$value->nama}}</option>
+				<option value="{{category_url($value)}}">{{$value->nama}}</option>
 				@endforeach
-				<!-- <option>Pull &amp; Bear</option>
-				<option>Reserved</option>
-				<option>United Colors of Benetton</option> -->
 			</select>
 		</div>
 		<!-- <label class="label-sort">Sort by:</label>
@@ -44,77 +40,49 @@
 
 	<div class="items-wrapper">
 		<div class="items">
-
-
-			@foreach($produk as $myproduk)
+            @foreach(list_product(null, @$category) as $myproduk)
 			<div class="item-block-2">
 				@if($myproduk->koleksiId!=0)
-                <!-- <div class="item-tag tag-off custom-font-1">
+                <div class="item-tag tag-off custom-font-1">
                     <span>{{$myproduk->koleksi->nama}}</span>
-                </div> -->
+                </div>
                 @endif
 				<div class="image-wrapper-3" style="position: relative;">
-					{{is_terlaris($myproduk)}}
-                                    	{{is_produkbaru($myproduk)}}
-                                    	{{is_outstok($myproduk)}}
+					@if(is_outstok($myproduk))
+                    {{is_outstok($myproduk)}}
+                    @elseif(is_terlaris($myproduk))
+                    {{is_terlaris($myproduk)}}
+                    @elseif(is_produkbaru($myproduk))
+                    {{is_produkbaru($myproduk)}}
+                    @endif
 					<div class="image">
 						<div class="image-overlay-1 trans-1">
 							<table>
 								<tr>
 									<td>
-										<a href="{{slugProduk($myproduk)}}" class="button-1 custom-font-1 trans-1"><span>Lihat</span></a>
+										<a href="{{product_url($myproduk)}}" class="button-1 custom-font-1 trans-1"><span>Lihat</span></a>
 									</td>
 								</tr>
 							</table>
 						</div>
-						<a href="{{slugProduk($myproduk)}}"><img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="{{$myproduk->nama}}" width="294" style="left: 50%; margin-left: -148px; top: 50%; margin-top: -148px;" /></a>
+						<a href="{{product_url($myproduk)}}">
+							<img src="{{product_image_url($myproduk->gambar1,'large')}}" alt="{{$myproduk->nama}}" width="294" />
+						</a>
 					</div>
 				</div>
-				<h3><a href="{{slugProduk($myproduk)}}" class="custom-font-1">{{$myproduk->nama}}</a></h3>
-				<p><b class="custom-font-1">{{jadiRupiah($myproduk->hargaJual)}}</b></p>
+				<h3><a href="{{product_url($myproduk)}}" class="custom-font-1">{{$myproduk->nama}}</a></h3>
+				<p><b class="custom-font-1">{{price($myproduk->hargaJual)}}</b></p>
 			</div>
 			@endforeach
-
 		</div>
 	</div>
 
 	<div class="clear"></div>
 	
 	<div class="pages custom-font-1">
-		{{$produk->links()}}
+		{{list_product(null, @$category)->links()}}
 	</div>
 
 	<div class="clear"></div>
-
-<!-- END .catalog -->
 </div>
-<br><br><br>
-
-<style type="text/css">
-	.breadcurm li{
-		float:left;
-	}
-	.breadcurm li a{
-		font-size: 16px;
-		margin-right: 12px;
-	}
-	.main-title p a{
-		float:left;
-		float:left; 
-		font-size: 17px; 
-		bottom: -8px; 
-		position: relative;
-		font-weight: normal;
-	}
-
-	.main-title p span{
-		float:left; 
-		font-size: 17px; 
-		bottom: -8px; 
-		position: relative;
-		font-weight: normal;
-		margin: 0 5px;
-	}
-
-</style>
-
+<!-- END .catalog -->

@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>{{$title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{$description}}">
@@ -11,4 +12,4 @@
 <meta name="DC.Title" content="{{$title}}">
 <meta name="DC.Subject" content="{{$keywords}}">
 <meta name="DC.Description" content="{{$description}}">
-<link rel="callisto-theme" href="{{dirTemaToko()}}callisto/">
+<meta name="theme_path" content="{{theme_path()}}">

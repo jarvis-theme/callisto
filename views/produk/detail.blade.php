@@ -1,13 +1,14 @@
 <!-- BEGIN .main-item-wrapper -->
 <div class="main-item-wrapper">
-
 	<div class="main-title">
-		<p class="" style="font-size: large;">
-			{{breadcrumbProduk($produk,'; <span>/</span>',';',true)}}
+		<p style="font-size: large;">
+			<a href="{{url('home')}}">Home</a>{{breadcrumbProduk($produk,'; <span>/</span>',';',true)}}
 		</p>
-		<!-- <a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{slugProduk($produk)}}" class="share">tweet this item</a> -->
-		<a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{slugProduk($produk)}}" class="share">share this item</a>
+		<!-- <a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{product_url($produk)}}" class="share">share this item</a> -->
 		<!-- <a href="http://twitter.com/home/?status=Twitter is like the lunch meeting with potential clients before you do the pitch. via @blogtyrant">tweet this </a> -->
+		<div class="sosmed">
+			{{sosialShare(product_url($produk))}}
+		</div>
 	</div>
 
 	<div class="main-image">
@@ -15,22 +16,30 @@
 			<div id="single-product-slider">
 				@if($produk->gambar1!='')
 			    <div class="image">
-					<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar1)}}" alt="" width="470" /></a>
+					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
+						<img src="{{product_image_url($produk->gambar1,'large')}}" width="470" />
+					</a>
 				</div>
 			  	@endif
 			  	@if($produk->gambar2!='')			  	
 			    <div class="image">
-					<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar2)}}" alt="" width="470" /></a>
+					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
+						<img src="{{product_image_url($produk->gambar2,'large')}}" width="470" />
+					</a>
 				</div>
 			  	@endif
 			  	@if($produk->gambar3!='')			  	
 			    <div class="image">
-					<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar3)}}" alt="" width="470" /></a>
+					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
+						<img src="{{product_image_url($produk->gambar3,'large')}}" width="470" />
+					</a>
 				</div>
 			  	@endif
 			  	@if($produk->gambar4!='')			  	
 			    <div class="image">
-					<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar4)}}" alt="" width="470" /></a>
+					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
+						<img src="{{product_image_url($produk->gambar4,'large')}}" width="470" />
+					</a>
 				</div>
 			  	@endif
 			</div>
@@ -42,7 +51,7 @@
 			    <td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
-							<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar1)}}" alt="" width="60" /></a>
+							<a href="#"><img src="{{product_image_url($produk->gambar1,'thumb')}}" width="60" /></a>
 						</div>
 					</div>
 				</td>
@@ -51,7 +60,7 @@
 			    <td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
-							<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar2)}}" alt="" width="60" /></a>
+							<a href="#"><img src="{{product_image_url($produk->gambar2,'thumb')}}" width="60" /></a>
 						</div>
 					</div>
 				</td>
@@ -60,7 +69,7 @@
 			    <td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
-							<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar3)}}" alt="" width="60" /></a>
+							<a href="#"><img src="{{product_image_url($produk->gambar3,'thumb')}}" width="60" /></a>
 						</div>
 					</div>
 				</td>
@@ -69,7 +78,7 @@
 			    <td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
-							<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar4)}}" alt="" width="60" /></a>
+							<a href="#"><img src="{{product_image_url($produk->gambar4,'thumb')}}" width="60" /></a>
 						</div>
 					</div>
 				</td>
@@ -79,13 +88,12 @@
 	</div>
 
 	<div class="text">
-		
 		<h2 class="custom-font-1"><a href="#">{{$produk->nama}}</a></h2>
 		<div class="price custom-font-1" >
 			<div style="width: auto">
-				<p>{{ jadiRUpiah($produk->hargaJual) }}</p>
+				<p>{{ price($produk->hargaJual) }}</p>
 				@if($produk->hargaCoret != 0)
-				<p><s>{{ jadiRUpiah($produk->hargaCoret) }}</s></p>
+				<p><s>{{ price($produk->hargaCoret) }}</s></p>
 				@endif
 			</div>
 			
@@ -109,15 +117,12 @@
 								<option value="">-- Pilih Opsi --</option>
 								@foreach ($opsiproduk as $key => $opsi)
 								<option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
-									
-									{{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{jadiRupiah($opsi->harga)}}
-									
+									{{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
 								</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="clear"></div><br>
-						
 					</div>
 				@endif
 				<div class="item">
@@ -142,64 +147,65 @@
 					<div class="item" style="text-align: justify;">
 						<p>{{$produk->deskripsi}}</p>
 					</div>
-					<div class="item">
+					<div class="item" style="height: 300px">
 						{{pluginTrustklik()}}
 					</div> 
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="clear"></div>
-
-<!-- END .main-item-wrapper -->
 </div>
+<!-- END .main-item-wrapper -->
 
 <!-- BEGIN .related-items -->
 <div class="featured-items related-items">
-
 	<div class="main-title">
 		<p class="custom-font-1">Related items</p>
 	</div>
 
 	<div class="items-wrapper">
 		<div class="items">
-
-			@foreach($produklain as $myproduk)
+		@if(count(other_product($produk)) > 0)
+			@foreach(other_product($produk) as $myproduk)
 			<div class="item-block-1" >
 				<!-- <div class="item-tag tag-off custom-font-1">
 					<span>Sale</span>
 				</div> -->
 				
 				<div class="image-wrapper-3" style="position: relative;">
-					{{is_terlaris($myproduk)}}
-                                	{{is_produkbaru($myproduk)}}
-                                	{{is_outstok($myproduk)}}
+					@if(is_outstok($myproduk))
+                    {{is_outstok($myproduk)}}
+                    @elseif(is_terlaris($myproduk))
+                    {{is_terlaris($myproduk)}}
+                    @elseif(is_produkbaru($myproduk))
+                    {{is_produkbaru($myproduk)}}
+                    @endif
 					<div class="image">
 						<div class="image-overlay-1 trans-1">
 							<table>
 								<tr>
 									<td>
-										<a href="{{slugProduk($myproduk)}}" class="button-1 custom-font-1 trans-1"><span>Lihat</span></a>
+										<a href="{{product_url($myproduk)}}" class="button-1 custom-font-1 trans-1"><span>Lihat</span></a>
 									</td>
 								</tr>
 							</table>
 						</div>
-						<a href="#"><img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt="{{$myproduk->nama}}" width="214" style="left: 50%; margin-left: -107px; top: 50%; margin-top: -106px;" /></a>
+						<a href="#"><img src="{{product_image_url($myproduk->gambar1,'medium')}}" alt="{{$myproduk->nama}}" width="214" /></a>
 					</div>
 				</div>
-				<h3><a href="{{slugProduk($myproduk)}}" class="custom-font-1">{{$myproduk->nama}}</a></h3>
-				<p><b class="custom-font-1">{{jadiRupiah($myproduk->hargaJual)}}</b></p>
+				<h3><a href="{{product_url($myproduk)}}" class="custom-font-1">{{$myproduk->nama}}</a></h3>
+				<p><b class="custom-font-1">{{price($myproduk->hargaJual)}}</b></p>
 			</div>
 			@endforeach	
-
+		@endif
 		</div>
 	</div>
 
 	<div class="clear"></div>
-
-<!-- END .related-items -->
+	<br><br><br>
 </div>
+<!-- END .related-items -->
 
-<div class="clear"></div><br><br><br>
+<div class="clear"></div>

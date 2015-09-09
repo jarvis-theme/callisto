@@ -6,7 +6,7 @@
             @if($key==0 || $key>2)
 
             @else
-            <div class="newsletter" style="width: auto; margin: 0 6% 30px 0;">
+            <div class="newsletter">
 	            <div class="main-title">
 					<p class="custom-font-1">{{$group->nama}}</p>
 				</div>
@@ -14,45 +14,73 @@
 				<ul>
 				@foreach($quickLink as $key=>$link)
 		            @if($group->id==$link->tautanId)
-						<li>
-							@if($link->halaman=='1')
-								<a href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-							@elseif($link->halaman=='2')
-								<a href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-							@elseif($link->url=='1')
-								<a href="{{strtolower($link->linkTo)}}">{{$link->nama}}</a>
-							@else
-								<a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-							@endif
-						</li>
+					<li>
+						<a href="{{menu_url($link)}}">{{$link->nama}}</a>
+					</li>
 					@endif
-
 				@endforeach
 				</ul>
 			</div>
 			@endif	
 		@endforeach
 
-		<div class="menu" style="width: 163px;">
+		<div class="menu">
 			<div class="main-title">
 				<p class="custom-font-1">Sosial Network</p>
 			</div>
 
-			<p class="social" style="">
+			<p class="social">
 				@if($kontak->fb)
-					<a style="background:none" target="_blank" href="{{$kontak->fb}}">
-						<img src="{{URL::to(dirTemaToko().'callisto/assets/images/ico-facebook-1.png')}}" alt="Facebook" width="23" height="21" />
-					</a>
+				<a target="_blank" href="{{$kontak->fb}}" title="Facebook">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" id="fb"></i>
+						<i class="fa fa-facebook-f fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
 				@endif
 				@if($kontak->tw)
-					<a style="background:none" target="_blank" href="{{$kontak->tw}}">
-						<img src="{{URL::to(dirTemaToko().'callisto/assets/images/ico-twitter-1.png')}}" alt="Twitter" width="23" height="21" />
-					</a>
+				<a target="_blank" href="{{$kontak->tw}}" title="Twitter">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" id="tw"></i>
+						<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
 				@endif
+				@if(!empty($kontak->gp))
+                <a target="_blank" href="{{url($kontak->gp)}}" title="Google+">
+                	<span class="fa-stack fa-lg">
+                		<i class="fa fa-circle fa-stack-2x" id="gp"></i>
+                		<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+            		</span>
+        		</a>
+                @endif
+                @if(!empty($kontak->pt))
+                <a target="_blank" href="{{url($kontak->pt)}}" title="Pinterest">
+                	<span class="fa-stack fa-lg">
+            			<i class="fa fa-pinterest fa-2x" id="pt"></i>
+        			</span>
+    			</a>
+                @endif
+                @if(!empty($kontak->tl))
+                <a target="_blank" href="{{url($kontak->tl)}}" title="Tumblr">
+                	<span class="fa-stack fa-lg">
+                		<i class="fa fa-circle fa-stack-2x" id="tl"></i>
+                		<i class="fa fa-tumblr fa-stack-1x fa-inverse"></i>
+            		</span>
+        		</a>
+                @endif
+                @if(!empty($kontak->ig))
+                <a target="_blank" href="{{url($kontak->ig)}}" title="Instagram">
+                	<span class="fa-stack fa-lg">
+                		<i class="fa fa-circle fa-stack-2x" id="ig-circle"></i>
+                		<i class="fa fa-instagram fa-stack-1x fa-inverse" id="ig"></i>
+            		</span>
+        		</a>
+                @endif
 			</p>
 		</div>
 
-		<div class="" style="min-width: 280px;float: left;margin: 0px 0px 0px 0px;">
+		<div class="contacts">
 			<div class="main-title">
 				<p class="custom-font-1" style="font-size: 24px;">Hubungi Kami</p>
 			</div>
@@ -69,21 +97,23 @@
 			@endif
 		</div>
 
-		<div class="copyright" style="">
+		<div class="copyright">
 		@if(!empty($bank))
 			@foreach(list_banks() as $value)
-				<a><img style="" src="{{bank_logo($value)}}" alt="" /></a>
-			@endforeach
-			@if(list_payments()[2]->aktif == 1)
+				<a><img src="{{bank_logo($value)}}" /></a>
+            @endforeach
+            @foreach(list_payments() as $pay)
+                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
 				<a><img src="{{ URL::to('img/bank/ipaymu.jpg') }}" alt="ipaymu"></a>
-			@endif
-			@if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-				<img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku">
-			@endif
+                @endif
+            @endforeach
+            @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+			<img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku">
+            @endif
 		@endif
 		</div>
 
-		<div class="copyright" style="padding: 39px 0 20px 0; margin:0">
+		<div class="copyright">
 			<table>
 				<tr>
 					<td>
@@ -93,5 +123,6 @@
 			</table>
 		</div>
 	</div>
-<!-- END .main-footer-wrapper -->
 </div>
+<!-- END .main-footer-wrapper -->
+{{pluginPowerup()}}

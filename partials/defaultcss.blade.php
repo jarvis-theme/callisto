@@ -1,16 +1,17 @@
 <!-- Stylesheets -->
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ropa+Sans" type="text/css" />
-<!--[if lt IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" type="text/css" /><![endif]-->
-<!-- <link rel="stylesheet" href="css/dark.css" type="text/css" /> -->
-<!--[if lt IE 9]><link rel="stylesheet" href="css/ie-dark.css" type="text/css" type="text/css" /><![endif]-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!--[if lt IE 9]>{{generate_theme_css('callisto/assets/css/ie.css')}}<![endif]-->
+<!-- {{generate_theme_css('callisto/assets/css/dark.css')}} -->
+<!--[if lt IE 9]>{{generate_theme_css('callisto/assets/css/ie-dark.css')}}<![endif]-->
 @if($tema->isiCss=='')
-	{{HTML::style(dirTemaToko().'callisto/assets/css/main-stylesheet.css')}}
+    {{generate_theme_css('callisto/assets/css/main-stylesheet.css')}} 
 @else
-	<style type="text/css">
-		{{--$tema->isiCss--}}
-	</style>
-	{{HTML::style('themes/leisure/assets/css/editmain-stylesheet.css')}}
+    {{generate_theme_css('callisto/assets/css/editmain-stylesheet.css')}} 
 @endif
 
-<!-- Icon Logo -->
-{{createFavicon($toko)}}
+{{generate_theme_css('callisto/assets/css/jquery.fancybox.css')}} 
+
+<!-- favicon -->
+{{favicon()}} 

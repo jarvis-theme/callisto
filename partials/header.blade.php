@@ -11,19 +11,18 @@
 				<li>{{HTML::link('logout', 'Logout')}}</li>
 			@endif
 			
-			<!-- <li class="checkout"><a href="customer-checkout-step-1.html">Checkout</a></li> -->
+			<!-- <li class="checkout"><a href="#">Checkout</a></li> -->
 			<li id='shoppingcartplace' class="cart">{{$ShoppingCart}}</li>
 		</ul>
 	</div>
-<!-- END .main-dock-wrapper -->
 </div>
+<!-- END .main-dock-wrapper -->
 
 <!-- BEGIN .main-header -->
 <div class="main-header">
-
 	<div class="logo">
 		<a href="{{URL::to('home')}}">
-			<img style="max-height:120px" src="{{URL::to(getPrefixDomain().'/galeri/'.$toko->logo)}}" alt="" />
+            {{HTML::image(logo_image_url(), 'Logo', array('style'=>'max-height: 120px'))}}
 		</a>
 		<!-- <a href="#" class="logo-icon custom-font-1"><span>Soulage</span></a> -->
 		<!-- <a href="#" class="logo-blank custom-font-1"><span>Mante&nbsp;and&nbsp;sons</span></a> -->
@@ -41,15 +40,15 @@
 	<div class="main-menu-iphone">
 		<div class="categories">
 			<span class="icon"></span>
-			<select>
-				@foreach($mainMenu as $key=>$link)	
-					<option>{{$link->nama}}</option>
+			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
+				@foreach(main_menu()->link as $menu)	
+				<option value="{{menu_url($menu)}}">{{$menu->nama}}</option>
 				@endforeach	
 			</select>
 		</div>
 		<div class="search-iphone">
-			<form action="#">
-				<input type="text" class="input-text-1 trans-1" placeholder="Cari" />
+			<form action="{{url('search')}}" method="post">
+				<input type="text" class="input-text-1 trans-1" placeholder="Cari" name="search" />
 			</form>
 		</div>
 		<div class="clear"></div>
@@ -60,16 +59,8 @@
 			<tr>
 				<td>
 					<ul>
-						@foreach($mainMenu as $key=>$link)	
-							@if($link->halaman=='1')	
-								<li><a class="single" href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
-							@elseif($link->halaman=='2')	
-								<li><a class="single" href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
-							@elseif($link->url=='1')	
-								<li><a class="single" href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
-							@else 	
-								<li><a class="single" href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
-							@endif	
+						@foreach(main_menu()->link as $links)	
+						<li><a class="single" href="{{menu_url($links)}}">{{$links->nama}}</a></li>
 						@endforeach	
 					</ul>
 				</td>
@@ -78,6 +69,5 @@
 	</div>
 
 	<div class="clear"></div>
-
-<!-- END .main-header -->	
 </div>
+<!-- END .main-header -->	

@@ -1,6 +1,5 @@
 <!-- BEGIN .single-full-width -->
 <div class="single-full-width customer customer-order">
-
 	<div class="main-title">
 		<p class="custom-font-1">
 			<a href="{{URL::to('checkout')}}">Keranjang Belanja</a><span>/</span>
