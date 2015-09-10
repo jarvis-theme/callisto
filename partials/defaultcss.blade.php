@@ -12,6 +12,7 @@
 @endif
 
 {{generate_theme_css('callisto/assets/css/jquery.fancybox.css')}} 
+{{generate_theme_css('callisto/assets/css/bootstrap.min.css')}} 
 
 <!-- favicon -->
 {{favicon()}} 

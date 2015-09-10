@@ -31,7 +31,7 @@
 
 	<div class="comments-wrapper">
 		{{$fbscript}}
-		{{fbcommentbox(blog_url($detailblog), 600, 10, 'light')}}
+		{{fbcommentbox(blog_url($detailblog), '100%', 10, 'light')}}
 	</div>
 </div>
 <!-- END .main-left-wrapper -->
@@ -86,3 +86,4 @@
 </div>
 <!-- END .main-sidebar-wrapper -->
 <div class="clear"></div>
+<br><br><br>

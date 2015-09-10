@@ -61,37 +61,23 @@ div.selector:hover { opacity: 1; }
 #slides { text-align: center; padding: 1px 0 30px; height: auto; }
 #callus { margin-right: 50px; width: auto; }
 .list-testimo { float: left;margin: 0px 45px 0px 0px;width: 421px; }
-.label-warning, .total .label-warning {
-    background-color: #F0AD4E;
-}
-.label-default, .total .label-default {
-    background-color: #777;
-}
-.label-info, .total .label-info {
-    background-color: #5BC0DE;
-}
-.label-success, .total .label-success {
-    background-color: #5CB85C;
-}
-.label-danger, .label-important, .total .label-danger, .total .label-important {
-    background-color: #D9534F;
-}
-.label {
-    display: inline;
-    padding: 0.2em 0.6em 0.3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #FFF;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25em;
-}
+.total .label-warning {background-color: #F0AD4E;}
+.total .label-default {background-color: #777;}
+.total .label-info {background-color: #5BC0DE;}
+.total .label-success {background-color: #5CB85C;}
+.label-important, .total .label-danger, .total .label-important {background-color: #D9534F;}
 .main-title p a > span { top: 0; }
 .main-title p > span:last-child {display: none;}
 .fb_reset, #fb-root{display: inline-block;}
 .fb-share-button { top: -5px; margin: 0px 5px 0px 8px; }
+.detail-price{ color: #358500; font-weight: bold; }
+.copyright img{margin: 2px;}
+.select input{ padding-left: 5px; }
+.table .order { width: 110px; }
+.table .date { width: 140px; }
+.table .payment { width: 150px; }
+.table .total { width: 95px; color: #358500; font-weight: bold; }
+
 
 .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0; filter:alpha(opacity=0); z-index: 700; display: none; }
 
@@ -652,18 +638,18 @@ div.selector:hover { opacity: 1; }
 	.guest-login { width: 328px; float: left; padding: 36px 0 0 0; }
 
 	.customer .order-history { width: 650px; float: left; }
-		.customer .order-history a { color: #da0a7b; }
-		.customer .order-history a:hover { color: #ff0a8f; }
+		.customer .order-history a, .table td a { color: #da0a7b; }
+		.customer .order-history a:hover, .table td a:hover { color: #ff0a8f; }
 		.customer .order-history .row { overflow: hidden; background: url(../images/border-5.png) bottom left repeat-x; padding: 13px 0 15px 0; }
 		.customer .order-history .title { font-size: 11px; font-weight: bold; color: #1e1e1e; padding: 0 0 11px 0; }
-			.customer .order-history .title .total { color: #1e1e1e; }
-		.customer .order-history .order { width: 110px; float: left; }
+		.customer .order-history .title .total { color: #1e1e1e; }
+		.customer .order-history .order  { width: 110px; float: left; }
 		.customer .order-history .date { width: 140px; float: left; }
 		.customer .order-history .payment { width: 150px; float: left; }
 		.customer .order-history .fulfillment { width: 155px; float: left; }
 		.customer .order-history .total { width: 95px; float: left; color: #358500; font-weight: bold; }
 
-	.customer .shipping-address { float: left; width: 248px; margin: 0 50px 0 0; }
+	.customer .shipping-address { float: left; width: 248px; margin: 0 15px 0 0; }
 		.customer .shipping-address .content { padding: 8px 17px 13px 17px; }
 			.customer .shipping-address .content a { color: #da0a7b; padding: 17px 0 0 0; display: block; }
 			.customer .shipping-address .content a:hover { color: #ff0a8f; }
@@ -794,9 +780,11 @@ div.selector:hover { opacity: 1; }
 @media screen and (max-width: 800px){
 	.contact-form form{ width: 100%; }
 	.contact-form div.text{ width: 100%; background: transparent url("../images/border-3.png") repeat-x scroll left bottom; margin-bottom: 30px; }
+	#table-order {margin-top: 10px;width: 100%;}
 }
 @media screen and (max-width: 979px) {
 	.main-content-wrapper { margin-bottom: 50%; }
+	#table-order {padding: 0;}
 }
 
 /* iPad layout */
@@ -1147,7 +1135,6 @@ div.selector:hover { opacity: 1; }
 	.customer .order-history .payment {float: left;width: 82px;}
 	.customer .order-history .order {float: left;width: 85px;}
 }
-
 @media only screen and (max-width: 767px){
 	.main-content-wrapper {padding: 0px 10px 750px;width: 300px; margin-bottom: 50%;}
 }

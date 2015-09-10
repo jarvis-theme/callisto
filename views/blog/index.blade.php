@@ -40,7 +40,7 @@
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
 				<option>select category</option>
 				@foreach($categoryList as $key=>$value)
-				<option value="{{blog_url($value)}}">{{$value->nama}}</option>
+				<option value="{{blog_category_url($value)}}">{{$value->nama}}</option>
 				@endforeach
 			</select>
 		</form>
@@ -216,3 +216,4 @@
 <!-- END .main-sidebar-wrapper -->
 
 <div class="clear"></div>
+<br><br><br>

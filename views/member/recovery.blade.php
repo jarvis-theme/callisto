@@ -29,6 +29,7 @@
 			<div class="main-title">
 				<p class="custom-font-1">Pelanggan Baru</p>
 			</div>
+			<p>Nikmati kemudahan dalam berbelanja saat anda terdaftar sebagai member.</p>
 			<a href="{{URL::to('member/create')}}" class="button-1 custom-font-1 trans-1"><span>Daftar sebagai member</span></a>
 		</div>
 
