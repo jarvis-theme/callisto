@@ -16,7 +16,7 @@
 	<div class="contact-form">
 		<div class="text">
 			<p>Alamat:<br><b>{{$kontak->alamat}}</b></p>
-			<p>Telpon:<br><b>{{$kontak->telepon}}</b></p>
+			<p>Telpon:<br><b>{{$kontak->telepon ? $kontak->telepon : '-'}}</b></p>
 			<p>Email:<br><b>{{$kontak->email}}</b></p>
 		</div>
 
@@ -39,7 +39,7 @@
 			</p> -->
 			<p>
 				<label>Pesan:</label>
-				<textarea name="messageKontak" required class="textarea-1"></textarea>
+				<textarea name="messageKontak" class="textarea-1" required></textarea>
 			</p>
 			<p class="submit">
 				<label></label>

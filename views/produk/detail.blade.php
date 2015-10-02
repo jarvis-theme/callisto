@@ -158,7 +158,7 @@
 	<div class="clear"></div>
 </div>
 <!-- END .main-item-wrapper -->
-
+@if(count(other_product($produk)) > 0)
 <!-- BEGIN .related-items -->
 <div class="featured-items related-items">
 	<div class="main-title">
@@ -207,6 +207,6 @@
 	<br><br><br>
 </div>
 <!-- END .related-items -->
-
+@endif
 <div class="clear"></div>
 <br><br><br>

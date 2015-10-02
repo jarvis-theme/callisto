@@ -122,7 +122,7 @@
         <!-- BEGIN .homepage-best-sellers -->
         <div class="homepage-about">
             <div class="main-title">
-                <p class="custom-font-1">Banner</p>
+                <p class="custom-font-1">Promo</p>
             </div>
 
             <div class="items">

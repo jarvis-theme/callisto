@@ -43,9 +43,9 @@
             @foreach(list_product(null, @$category) as $myproduk)
 			<div class="item-block-2">
 				@if($myproduk->koleksiId!=0)
-                <div class="item-tag tag-off custom-font-1">
+                <!-- <div class="item-tag tag-off custom-font-1">
                     <span>{{$myproduk->koleksi->nama}}</span>
-                </div>
+                </div> -->
                 @endif
 				<div class="image-wrapper-3" style="position: relative;">
 					@if(is_outstok($myproduk))

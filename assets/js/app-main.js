@@ -2,7 +2,7 @@ var dirTema = document.querySelector("meta[name='theme_path']").getAttribute('co
 
 require.config({
 	baseUrl: '/',
-	urlArgs: "v=002",
+	urlArgs: "v=003",
     waitSeconds : 60,
 	shim: {
 		"bootstrap"	: {
@@ -51,9 +51,7 @@ require.config({
 		router          : 'js/router',
 
 		// CONTROLLER
-		category        : dirTema+'/assets/js/pages/category',
 		home            : dirTema+'/assets/js/pages/home',
-		member          : dirTema+'/assets/js/pages/member',
 		main            : dirTema+'/assets/js/pages/default',
 		produk          : dirTema+'/assets/js/pages/produk',
 	}
