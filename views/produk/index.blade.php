@@ -22,9 +22,21 @@
 		<div class="category">
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
 				<option>Semua produk</option>
-				@foreach($kategori as $value)
-				<option value="{{category_url($value)}}">{{$value->nama}}</option>
-				@endforeach
+				@foreach(list_category() as $key => $menu)
+                    			@if($menu->parent == 0)
+                        			@if(count($menu->anak) == 0)
+							<option value="{{category_url($menu)}}">{{$menu->nama}}</option>
+						@elseif(count($menu->anak) >= 1)
+							<option value="{{category_url($menu)}}">{{$menu->nama}}</option>
+							@foreach(list_category() as $key=>$submenu)
+								@if($menu->id==$submenu->parent)
+								<option value="{{category_url($submenu)}}">{{$submenu->nama}}</option>
+								@endif
+							@endforeach
+						@endif
+                    
+                    			@endif
+                		@endforeach
 			</select>
 		</div>
 		<!-- <label class="label-sort">Sort by:</label>
