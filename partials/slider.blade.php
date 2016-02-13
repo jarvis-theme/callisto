@@ -4,6 +4,11 @@
 	<div id="hompage-slider_content">
 		@foreach(slideshow() as $slides)
 		<div class="item">
+			@if(!empty($slides->text))
+			<div class="title">
+				<h3 class="custom-font-1">{{$slides->text}}</h3>
+			</div>
+			@endif
 			<!-- <div class="title">
 				<h3 class="custom-font-1">New 2012 summer apparel collection</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nibh risus.Morbi dapibus lectus at erat viverra malesuada. <a href="#">Read more</a></p>
