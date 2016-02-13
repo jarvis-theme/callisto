@@ -2,16 +2,10 @@ var dirTema = document.querySelector("meta[name='theme_path']").getAttribute('co
 
 require.config({
 	baseUrl: '/',
-	urlArgs: "v=003",
+	urlArgs: "v=002",
     waitSeconds : 60,
 	shim: {
 		"bootstrap"	: {
-			deps : ['jquery'],
-		},
-		"noty_util" : {
-			deps : ['jquery','noty'],
-		},
-		"noty" : {
 			deps : ['jquery'],
 		},
 		"cart" : {
@@ -40,7 +34,6 @@ require.config({
 		cart			: 'js/shop_cart',
 		jq_ui			: 'js/jquery-ui',
 		noty			: 'js/jquery.noty',
-		noty_util		: 'js/utils/noty',
 		bootstrap		: '//maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min',
 		fancybox		: dirTema+'/assets/js/lib/jquery.fancybox.pack',
 		jq_cycle		: dirTema+'/assets/js/lib/jquery.cycle.all',
@@ -60,10 +53,8 @@ require([
 	'router',
 	'bootstrap',
 	'main',
-	'cart',
-	'noty_util'
-], function(router,b,main,cart,noty){
-	noty.run();
+	'cart'
+], function(router,b,main,cart){
 	cart.run();
 	main.run();
 	

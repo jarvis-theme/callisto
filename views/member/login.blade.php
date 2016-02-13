@@ -1,4 +1,4 @@
-<div class="container">
+<div>
 	<div class="main-title">
 		<p class="custom-font-1">Login Pelanggan</p>
 	</div>
@@ -8,7 +8,7 @@
 		<div class="login">
 			<form class="form-horizontal" action="{{URL::to('member/login')}}" method="post">
 				<p>
-					<label>E-mail address:</label>
+					<label>Email:</label>
 					<input type="text" name="email" class="input-text-1" required />
 				</p>
 				<p>

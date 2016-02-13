@@ -51,7 +51,7 @@
 					<td>{{ price($item->total)}}</td>
 					<td>
 						@if($item->status==0)
-						<a href="{{URL::to('konfirmasiorder/'.$item->id)}}" class="button-1 custom-font-1 trans-1"><span style="font-size: 12px">Konfirmasi Pembayaran</span></a>
+						<a href="{{URL::to('konfirmasiorder/'.$item->id)}}" class="button-1 custom-font-1 trans-1"><span class="confirm-payment">Konfirmasi Pembayaran</span></a>
 						@endif
 					</td>
 				</tr>

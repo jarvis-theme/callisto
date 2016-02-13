@@ -1,3 +1,7 @@
+<div class="main-title">
+	<p class="custom-font-1">Daftar Sebagai Pelanggan</p>
+</div>
+
 <!-- BEGIN .single-full-width -->
 <div class="single-full-width customer">
 	<div class="contact-form">
@@ -15,7 +19,7 @@
 				<input type="password"  name="password"  class="input-text-1" required />
 			</p>
 			<p>
-				<label>Confirm Password* :</label>
+				<label>Ulang Password* :</label>
 				<input type="password" name="password_confirmation" class="input-text-1" />
 			</p>
 			<p>
@@ -24,38 +28,39 @@
 			</p>
 			<p>
 				<label>Negara* :</label>
-				{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara,Input::old("provinsi"),array('required', 'id'=>"negara", "data-rel"=>"chosen"))}}
+				{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara, Input::old("provinsi"), array('required', 'id'=>"negara", "data-rel"=>"chosen"))}}
 			</p>
 			<p>
 				<label>Provinsi* :</label>
 				<span id="provinsiPlace">
-				  	{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'id'=>"provinsi", "data-rel"=>"chosen"))}}
+				  	{{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, Input::old("provinsi"), array('required', 'id'=>"provinsi", "data-rel"=>"chosen"))}}
 				</span>
 			</p>
 			<p>
 				<label>Kota* :</label>
 				<span id="kotaPlace">
-					{{Form::select('kota',array('' => '-- Pilih Kota --'),Input::old("kota"), array('required'=>'','id'=>'kota'))}}
+					{{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, Input::old("kota"), array('required'=>'','id'=>'kota'))}}
 				</span>
 			</p>
 			<p>
 				<label>Kode Pos:</label>
-				<input type="text" name='kodepos' value='{{Input::old("kodepos")}}' class="input-text-1" required />
+				<input type="text" name="kodepos" value="{{Input::old('kodepos')}}" class="input-text-1" required />
 			</p>
 			<p>
 				<label>Telepon / HP* :</label>
-				<input type="text" name='telp' value='{{Input::old("telp")}}' class="input-text-1" required />
+				<input type="text" name="telp" value="{{Input::old('telp')}}" class="input-text-1" required />
 			</p>
 			<p>
-				<label>Captcha*</label>
+				<label>Kode*</label>
 				{{ HTML::image(Captcha::img(), 'Captcha image') }}
 			</p>
 			<p>
 				<label></label>
-				<input type="text" name='captcha' class="input-text-1" required />
+				<input type="text" name="captcha" class="input-text-1" required />
 			</p>
 			<p>
-				<input type="checkbox" name='readme' value="1" required> Saya telah membaca dan menyetujui <a href="{{URL::to('service')}}">Persyaratan Member</a>
+				<label class="read"></label>
+				<input type="checkbox" name="readme" value="1" required checked> Saya telah membaca dan menyetujui <a href="{{URL::to('service')}}">Persyaratan Member</a>
 			</p>
 			<p class="sign-in">
 				<label></label>
@@ -68,7 +73,7 @@
 		<div class="main-title">
 			<p class="custom-font-1">Pelanggan Lama</p>
 		</div>
-		<p>Sudah punya Akun?</p>
+		<p>Sudah punya Akun? Silahkan login untuk memudahkan anda dalam berbelanja.</p>
 		<a href="{{URL::to('member/')}}" class="button-1 custom-font-1 trans-1"><span>Login</span></a>
 	</div>
 

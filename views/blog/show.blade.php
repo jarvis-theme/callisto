@@ -4,7 +4,7 @@
 	<div class="post-wrapper">
 		<h2 class="post-title custom-font-1"><a href="#">{{$detailblog->judul}}</a></h2>
 		<div class="title-legend">
-			<a href="#" class="date">{{date("d M Y", strtotime($detailblog->updated_at))}}</a>
+			<a href="#" class="date">{{date("d M Y", strtotime($detailblog->created_at))}}</a>
 			<!-- <a href="#" class="comments">9</a> -->
 			<!-- <a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{blog_url($detailblog)}}" class="share">Bagi post ini</a> -->
             {{sosialShare(blog_url($detailblog))}}
@@ -41,7 +41,7 @@
 	<!-- BEGIN .shop-by-category -->
 	<div class="shop-by-category sidebar-item">
 		<div class="main-title">
-			<p class="custom-font-1">Blog by category</p>
+			<p class="custom-font-1">Cari Kategori Artikel</p>
 		</div>
 		<form action="#">
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
@@ -57,7 +57,7 @@
 	<!-- BEGIN .post-tags -->
 	<div class="post-tags sidebar-item">
 		<div class="main-title">
-			<p class="custom-font-1">Post tags</p>
+			<p class="custom-font-1">Tags</p>
 		</div>
 		{{ getTags('<span class="s-tag"></span>',$tag)}}	
 		<div class="clear"></div>

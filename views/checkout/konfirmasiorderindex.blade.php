@@ -7,7 +7,7 @@
 	<div class="contact-form">
 		<p>Silakan masukkan kode order yang mau anda cari!</p>
 		{{Form::open(array('url'=>'konfirmasiorder','method'=>'post','class'=>'form-inline'))}}
-			<input style="float:left;" type="text" class="input-text-1" placeholder=" Kode Order" name='kodeorder'>
+			<input type="text" class="input-text-1 pull-left" placeholder="Kode Order" name="kodeorder">
 	  		<button type="submit" class="button-1 custom-font-1 trans-1"><span> Cari Kode</span></button>
 		{{Form::close()}}
 	</div>
@@ -30,5 +30,3 @@
 		</div>				
 	</div>
 </div>-->
-
-<div id="cart_dialog" class="content_dialog"><img style="margin:100px;" /></div>

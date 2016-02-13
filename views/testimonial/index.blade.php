@@ -11,7 +11,7 @@
 				<a href="#">{{$value->nama}}</a>
 			</div>
 			<div class="title-legend">
-				<a href="#" class="date">{{date("d M Y", strtotime($value->updated_at))}}</a>
+				<a href="#" class="date">{{date("d M Y", strtotime($value->created_at))}}</a>
 				<!-- <a href="#" class="comments">9</a> -->
 				<!-- <a href="#" class="share">Share this post</a> -->
 			</div>

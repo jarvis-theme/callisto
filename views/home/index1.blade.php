@@ -5,7 +5,7 @@
             <div id="hompage-slider_content" id="slides">
                 @foreach(horizontal_banner() as $banner)
                 <a href="{{URL::to($banner->url)}}">
-                    <img src="{{banner_image_url($banner->gambar)}}" />
+                    <img src="{{banner_image_url($banner->gambar)}}" alt="Info Promo" class="homebanner" />
                 </a>
                 @endforeach
             </div>
@@ -26,7 +26,7 @@
                             <span>{{$myproduk->koleksi->nama}}</span>
                         </div>
                         @endif
-                        <div class="image-wrapper-3" style="position: relative;">
+                        <div class="image-wrapper-3 homeproduct">
 		                    @if(is_outstok($myproduk))
                             {{is_outstok($myproduk)}}
                             @elseif(is_terlaris($myproduk))
@@ -74,23 +74,24 @@
             </div>
             <div class="text">
                 <div class="title-legend">
+                    @if(!empty($shop->ym))
                     {{ymyahoo($shop->ym)}}
                     <br>
-                    
+                    @endif
                     @if($shop->telepon)
                     <br>
-                    <a href="#" class="comments">{{$shop->telepon}}</a>
+                    <a href="#" class="comments" title="Telepon">{{$shop->telepon}}</a>
                     @endif
                     
                     @if($shop->hp)
                     <br>
-                    <a href="#" class="comments">{{$shop->hp}}</a>
+                    <a href="#" class="comments" title="SMS">{{$shop->hp}}</a>
                     @endif
                     
                     @if($shop->bb)
                     <br>
                     <!-- <img src="{{URL::to('img/bbm.png')}}" style="width: 30px;"> -->
-                    <a href="#" class="comments">{{$shop->bb}}</a>
+                    <a href="#" class="comments" title="Pin BB">{{$shop->bb}}</a>
                     <br><br>
                     @endif
                 </div>
@@ -110,7 +111,7 @@
                 <div class="item">
                     <div class="text">
                         <h5><a href="#" class="custom-font-1">"{{$items->isi}}"</a></h5>
-                        <p><a href="#">&nbsp;   {{$items->nama}}</a></p>
+                        <p><a href="#">~ {{$items->nama}}</a></p>
                     </div>
                 </div>
                 <br>
@@ -128,11 +129,19 @@
             <div class="items">
                 @foreach(vertical_banner() as $banner)
                 <a target="_blank" href="{{URL::to($banner->url)}}">
-                    <img src="{{banner_image_url($banner->gambar)}}"/>
+                    <img src="{{banner_image_url($banner->gambar)}}" alt="Promo {{Theme::place('title')}}" />
                 </a>
                 @endforeach
             </div>
             <div class="clear"></div>
         </div>
         <!-- END .homepage-best-sellers -->
+        <div class="clear"></div>
+
+        <div class="powerup">
+            <div class="cekresi">
+                {{pluginSidePowerup()}}
+            </div>
+            <br>
+        </div>
         <div class="clear"></div>

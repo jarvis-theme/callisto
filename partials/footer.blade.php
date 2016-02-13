@@ -2,7 +2,7 @@
 <div class="main-footer-wrapper">
 	<a href="#" class="back-to-the-top">Kembali ke atas</a>
 	<div class="main-footer">
-		@foreach($tautan as $key=>$group)
+		@foreach(all_menu() as $key=>$group)
             @if($key==0 || $key>2)
 
             @else
@@ -12,7 +12,7 @@
 				</div>
 
 				<ul>
-				@foreach($quickLink as $key=>$link)
+				@foreach($group->link as $key=>$link)
 		            @if($group->id==$link->tautanId)
 					<li>
 						<a href="{{menu_url($link)}}">{{$link->nama}}</a>
@@ -82,16 +82,16 @@
 
 		<div class="contacts">
 			<div class="main-title">
-				<p class="custom-font-1" style="font-size: 24px;">Hubungi Kami</p>
+				<p class="custom-font-1">Hubungi Kami</p>
 			</div>
 
 			@if($kontak->alamat!='')
 				<p><b>Alamat:</b> <br>{{$kontak->alamat}}</p><br>
-				<p><b>Telpon:</b> <br>{{$kontak->telepon}}</p><br>
+				<p><b>Telepon:</b> <br>{{$kontak->telepon}}</p><br>
 				@if(!empty($kontak->bb))
                 <p><b>PIN BB: </b> <br>{{$kontak->bb}}</p><br>
                 @endif
-				<b>Email:</b> <br><a style="color:white" href="mailto:{{$kontak->email}}">{{$kontak->email}}</a>
+				<b>Email:</b> <br><a class="white" href="mailto:{{$kontak->email}}">{{$kontak->email}}</a>
 			@else
 				<p></p>
 			@endif
@@ -100,15 +100,21 @@
 		<div class="copyright">
 		@if(!empty($bank))
 			@foreach(list_banks() as $value)
-				<a><img src="{{bank_logo($value)}}" /></a>
+			<a><img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" /></a>
             @endforeach
             @foreach(list_payments() as $pay)
+            	@if($pay->nama == 'paypal' && $pay->aktif == 1)
+                <a><img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" /></a>
+                @endif
                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-				<a><img src="{{ URL::to('img/bank/ipaymu.jpg') }}" alt="ipaymu"></a>
+				<a><img src="{{ URL::to('img/bank/ipaymu.jpg') }}" alt="ipaymu" title="Ipaymu"></a>
+                @endif
+                @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                <a><img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" /></a>
                 @endif
             @endforeach
             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-			<img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku">
+			<img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku" title="Doku">
             @endif
 		@endif
 		</div>

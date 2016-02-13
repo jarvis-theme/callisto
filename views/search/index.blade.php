@@ -1,7 +1,7 @@
 <!-- BEGIN .main-left-wrapper -->
 <div class="main-left-wrapper">
 	<div class="main-title">
-		<p class="custom-font-1">Search results</p>
+		<p class="custom-font-1">Hasil Pencarian</p>
 	</div>
 
 	<div class="blog-list">
@@ -45,7 +45,7 @@
 					<a href="{{URL::to('halaman/'.$myhal->slug)}}">{{$myhal->judul}}</a>
 				</div>
 				<div class="title-legend">
-					<a href="#" class="date">{{date("d M Y", strtotime($myhal->updated_at))}}</a>
+					<a href="#" class="date">{{date("d M Y", strtotime($myhal->created_at))}}</a>
 					<!-- <a href="#" class="comments">9</a> -->
 					<!-- <a href="#" class="share">Share this post</a> -->
 				</div>
@@ -62,7 +62,7 @@
 					<a href="{{blog_url($myblog)}}">{{$myblog->judul}}</a>
 				</div>
 				<div class="title-legend">
-					<a href="#" class="date">{{date("d M Y", strtotime($myblog->updated_at))}}</a>
+					<a href="#" class="date">{{date("d M Y", strtotime($myblog->created_at))}}</a>
 					<!-- <a href="#" class="comments">9</a> -->
 					<!-- <a href="#" class="share">Share this post</a> -->
 				</div>
@@ -73,8 +73,8 @@
 			</div>
 			@endforeach
 		@else
-			<article style="text-align: center; border: 0;">
-				<i>Hasil tidak ditemukan</i>
+			<article class="result">
+				<i>Data tidak ditemukan</i>
 			</article>
 		@endif
 	</div>
@@ -109,7 +109,7 @@
 							</table>
 						</div>
 						<a href="{{product_url($item)}}">
-							<img src="{{url(product_image_url($item->gambar1,'thumb'))}}" width="94" height="94" />
+							<img src="{{url(product_image_url($item->gambar1,'thumb'))}}" width="94" height="94" alt="{{$item->nama}}" />
 						</a>
 					</div>
 				</div>
@@ -151,7 +151,7 @@
 							</table>
 						</div>
 						<a href="{{product_url($item)}}">
-							<img src="{{url(product_image_url($item->gambar1,'thumb'))}}" width="94" height="94" />
+							<img src="{{url(product_image_url($item->gambar1,'thumb'))}}" width="94" height="94" alt="{{$item->nama}}" />
 						</a>
 					</div>
 				</div>

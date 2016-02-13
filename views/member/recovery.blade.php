@@ -1,4 +1,4 @@
-<div class="container">
+<div>
 	<!-- Login Section -->
 	<div class="main-title">
 		<p class="custom-font-1">Reset Password</p>

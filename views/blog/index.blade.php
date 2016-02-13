@@ -11,7 +11,7 @@
 				<a href="{{blog_url($value)}}">{{$value->judul}}</a>
 			</div>
 			<div class="title-legend">
-				<a href="#" class="date">{{date("d M Y", strtotime($value->updated_at))}}</a>
+				<a href="#" class="date">{{date("d M Y", strtotime($value->created_at))}}</a>
 				<!-- <a href="#" class="comments">9</a> -->
 				<a onclick="window.open(this.href, 'mywin', 'left=20, top=20, width=500, height=500, toolbar=1, resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{blog_url($value)}}" class="share">Bagikan artikel ini</a>
 			</div>
@@ -34,12 +34,12 @@
 	<!-- BEGIN .shop-by-category -->
 	<div class="shop-by-category sidebar-item">
 		<div class="main-title">
-			<p class="custom-font-1">Cari by Kategori</p>
+			<p class="custom-font-1">Cari Kategori Artikel</p>
 		</div>
 		<form action="#">
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
 				<option>select category</option>
-				@foreach($categoryList as $key=>$value)
+				@foreach(list_blog_category() as $key=>$value)
 				<option value="{{blog_category_url($value)}}">{{$value->nama}}</option>
 				@endforeach
 			</select>

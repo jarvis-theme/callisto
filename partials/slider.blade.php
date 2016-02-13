@@ -1,7 +1,7 @@
 <!-- BEGIN .homepage-slider -->
 <div class="homepage-slider">
 	<!-- BEGIN  #hompage-slider_content -->
-	<div id="hompage-slider_content" style="height: 410px;">
+	<div id="hompage-slider_content">
 		@foreach(slideshow() as $slides)
 		<div class="item">
 			<!-- <div class="title">
@@ -14,7 +14,13 @@
 				<h6 class="custom-font-1">$120</h6>
 				<a href="#" class="read-more">Read more</a>
 			</div> -->
-			<a href="#"><img src="{{slide_image_url($slides->gambar)}}" width="944" /></a>
+			@if(!empty($slides->url))
+            <a href="{{filter_link_url($slides->url)}}" target="_blank">
+            @else
+            <a href="#">
+            @endif
+				<img src="{{slide_image_url($slides->gambar)}}" width="944" alt="{{$slides->title}}" />
+			</a>
 		</div>
 		@endforeach
 	</div>

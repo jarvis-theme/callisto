@@ -11,8 +11,8 @@
 				<li>{{HTML::link('logout', 'Logout')}}</li>
 			@endif
 			
-			<!-- <li class="checkout"><a href="#">Checkout</a></li> -->
-			<li id='shoppingcartplace' class="cart">{{$ShoppingCart}}</li>
+			<!-- <li class="checkout"><a href="{{url('checkout')}}">Checkout</a></li> -->
+			<li id="shoppingcartplace" class="cart">{{shopping_cart()}}</li>
 		</ul>
 	</div>
 </div>
@@ -22,7 +22,7 @@
 <div class="main-header">
 	<div class="logo">
 		<a href="{{URL::to('home')}}">
-            {{HTML::image(logo_image_url(), 'Logo', array('style'=>'max-height: 120px'))}}
+            {{HTML::image(logo_image_url(), 'Logo '.Theme::place('title'))}}
 		</a>
 		<!-- <a href="#" class="logo-icon custom-font-1"><span>Soulage</span></a> -->
 		<!-- <a href="#" class="logo-blank custom-font-1"><span>Mante&nbsp;and&nbsp;sons</span></a> -->

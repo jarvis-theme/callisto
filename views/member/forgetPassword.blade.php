@@ -1,4 +1,4 @@
-	<div class="container">
+	<div>
 		<div class="main-title">
 			<p class="custom-font-1">Lupa Password</p>
 		</div>
@@ -8,13 +8,13 @@
 			<div class="login">
 				<form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post">
 					<p>
-						<label>E-mail address:</label>
+						<label>Email:</label>
 						<input type="text" name="recoveryEmail" class="input-text-1" required />
 					</p>
 					<p class="sign-in">
 						<label></label>
 						<button type="submit" class="button-1 custom-font-1 trans-1"><span>Reset Password</span></button>
-						<b>atau <a href="{{URL::to('produk')}}">ke Login</a></b>
+						<b>atau <a href="{{URL::to('member')}}">Login</a></b>
 					</p>
 				</form>
 			</div>

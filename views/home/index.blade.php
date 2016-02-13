@@ -1,12 +1,14 @@
 <div id="slides">
     @foreach(horizontal_banner() as $banner)
-    <a href="{{URL::to($banner->url)}}"><img src="{{banner_image_url($banner->gambar)}}" style="max-width:100%" /></a>
+    <a href="{{URL::to($banner->url)}}">
+        <img src="{{banner_image_url($banner->gambar)}}" class="homebanner" alt="Info Promo" />
+    </a>
     @endforeach
 </div>
 <!-- BEGIN .featured-items -->
 <div class="featured-items">
     <div class="main-title">
-        <p class="custom-font-1">Produk Kita</p>
+        <p class="custom-font-1">Produk Kami</p>
         <a href="{{URL::to('produk')}}" class="view">Lihat produk yang lainnya</a>
     </div>
 
@@ -14,7 +16,7 @@
         <div class="items">
             @foreach(home_product() as $key=>$myproduk)
             <div class="item-block-1">
-                <div class="image-wrapper-3" style="position: relative;">
+                <div class="image-wrapper-3 homeproduct">
                     @if(is_outstok($myproduk))
                     {{is_outstok($myproduk)}}
                     @elseif(is_terlaris($myproduk))

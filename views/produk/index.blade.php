@@ -1,42 +1,38 @@
 <!-- BEGIN .catalog -->
 <div class="catalog">
 	<div class="main-title">
-		@if(!empty($kategoridetail))
-            <p>
-				<a href="{{url('home')}}">Home</a>{{breadcrumbProduk(null,'; <span>/</span>',';', true, $kategoridetail)}}
-			</p>
-        @else
-        <ul style="float:left" class="breadcurm">
-        	<li><a href="{{url('home')}}">Home</a></li>
-        	<li><a>/</a></li>
-            <li><a>Produk</a></li>
-        </ul>
-        @endif
+        <p>
+			{{breadcrumbProduk(null,'; <span>/</span>',';', true, @$category, @$colection)}}
+		</p>
 
 		<!-- <a href="#" class="grid-2">4 column view</a>
 		<a href="#" class="grid-1">3 column view</a> -->
 	</div>
 
 	<form action="#" class="navigation">
-		<label>Cari by Kategori:</label>
+		<label>Cari Produk Kategori:</label>
 		<div class="category">
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
-				<option>Semua produk</option>
+				<option value="{{url('produk')}}">Semua produk</option>
 				@foreach(list_category() as $key => $menu)
-                    			@if($menu->parent == 0)
-                        			@if(count($menu->anak) == 0)
-							<option value="{{category_url($menu)}}">{{$menu->nama}}</option>
+	    			@if($menu->parent == 0)
+	        			@if(count($menu->anak) == 0)
+							<option value="{{category_url($menu)}}" {{URL::current() == category_url($menu) ? 'selected="selected"' : ''}}>{{$menu->nama}}</option>
 						@elseif(count($menu->anak) >= 1)
-							<option value="{{category_url($menu)}}">{{$menu->nama}}</option>
-							@foreach(list_category() as $key=>$submenu)
+							<option value="{{category_url($menu)}}" {{URL::current() == category_url($menu) ? 'selected="selected"' : ''}}>{{$menu->nama}}</option>
+							@foreach($menu->anak as $key=>$submenu)
 								@if($menu->id==$submenu->parent)
-								<option value="{{category_url($submenu)}}">{{$submenu->nama}}</option>
+								<option value="{{category_url($submenu)}}" class="submenu" {{URL::current() == category_url($submenu) ? 'selected="selected"' : ''}}>{{$submenu->nama}}</option>
+								@endif
+								@if(count($submenu->anak) > 0)
+									@foreach($submenu->anak as $submenu2)
+									<option value="{{category_url($submenu2)}}" class="submenu2" {{URL::current() == category_url($submenu2) ? 'selected="selected"' : ''}}>{{$submenu2->nama}}</option>
+									@endforeach
 								@endif
 							@endforeach
 						@endif
-                    
-                    			@endif
-                		@endforeach
+	    			@endif
+        		@endforeach
 			</select>
 		</div>
 		<!-- <label class="label-sort">Sort by:</label>
@@ -59,7 +55,7 @@
                     <span>{{$myproduk->koleksi->nama}}</span>
                 </div> -->
                 @endif
-				<div class="image-wrapper-3" style="position: relative;">
+				<div class="image-wrapper-3 homeproduct">
 					@if(is_outstok($myproduk))
                     {{is_outstok($myproduk)}}
                     @elseif(is_terlaris($myproduk))
@@ -82,7 +78,7 @@
 						</a>
 					</div>
 				</div>
-				<h3><a href="{{product_url($myproduk)}}" class="custom-font-1">{{$myproduk->nama}}</a></h3>
+				<h3><a href="{{product_url($myproduk)}}" class="custom-font-1">{{short_description($myproduk->nama, 25)}}</a></h3>
 				<p><b class="custom-font-1">{{price($myproduk->hargaJual)}}</b></p>
 			</div>
 			@endforeach
@@ -92,10 +88,16 @@
 	<div class="clear"></div>
 	
 	<div class="pages custom-font-1">
-		{{list_product(null, @$category)->links()}}
+		{{list_product(null, @$category, @$colection)->links()}}
 	</div>
 
 	<div class="clear"></div>
 </div>
 <!-- END .catalog -->
+<div class="powerup">
+    <div class="cekresi">
+        {{pluginSidePowerup()}}
+    </div>
+    <br>
+</div>
 <br><br><br>
