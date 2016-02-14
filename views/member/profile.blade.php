@@ -1,3 +1,6 @@
+<div class="main-title">
+	<p class="custom-font-1">Edit Profile</p>
+</div>
 <!-- BEGIN .single-full-width -->
 <div class="single-full-width customer">
 	<div class="contact-form">
@@ -43,25 +46,24 @@
 				<label></label>
 				<button type="submit" class="button-1 custom-font-1 trans-1"><span>Simpan</span></button>
 			</p>
-		
-			<div class="guest-login">
-				<div class="main-title">
-					<p class="custom-font-1">Ubah Password</p>
-				</div>
-				Password lama<br>
-				<input class="password" class="input-text-1" type="password" name="oldpassword">
-				<br><br>
+	</div>
+	<div class="guest-login">
+		<div class="main-title">
+			<p class="custom-font-1">Ubah Password</p>
+		</div>
+		Password Lama<br>
+		<input class="input-text-1 password" type="password" name="oldpassword">
+		<br><br>
 
-				Password baru<br>
-				<input class="password" class="input-text-1" type="password" name="password">
-				<br><br>
+		Password Baru<br>
+		<input class="input-text-1 password" type="password" name="password">
+		<br><br>
 
-				Confirm password baru<br>
-				<input class="password" class="input-text-1" type="password" name="password_confirmation">
-				<br><br>
-			</div>
+		Ulangi Password Baru<br>
+		<input class="input-text-1 password" type="password" name="password_confirmation">
+		<br><br>
+	</div>
 		{{Form::close()}}
 		<div class="clear"></div>
-	</div>
 </div>
 <!-- END .single-full-width -->
