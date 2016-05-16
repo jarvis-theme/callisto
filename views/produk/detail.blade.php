@@ -156,7 +156,7 @@
 						<p>{{$produk->deskripsi}}</p>
 					</div>
 					<div class="item trust">
-						{{pluginTrustklik()}}
+						{{ pluginComment(product_url($produk), @$produk) }}
 					</div> 
 				</div>
 			</div>

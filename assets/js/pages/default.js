@@ -1,4 +1,4 @@
-define(['jquery','jq_cycle','jq_uniform','bootstrap','fancybox'], function($)
+define(['jquery','jq_cycle','jq_uniform','bootstrap','fancybox','jquery_cookie'], function($)
 {
 	return new function()
 	{
@@ -10,16 +10,26 @@ define(['jquery','jq_cycle','jq_uniform','bootstrap','fancybox'], function($)
 				initAccountLogin();
 				initFormElements();
 				adjustCollectionItemHeight();
-		    });
+			});
 			initAddressManage();
 
 			$('.fancybox').fancybox({
-                padding: 10,
-                openEffect : 'elastic',
-                openSpeed  : 150,
-                closeEffect : 'elastic',
-                closeSpeed  : 150
-            });
+				padding: 10,
+				openEffect : 'elastic',
+				openSpeed  : 150,
+				closeEffect : 'elastic',
+				closeSpeed  : 150
+			});
+			// if($.cookie('promo-artian') === undefined || $.cookie('promo-artian') == 'false'){
+				// Show the exit popup
+				// $('#exitpopup').modal('show');
+			// }
+			/*$('#close-promo').on('click',function(){
+				$('#exitpopup').modal('hide');
+				var date = new Date();
+				date.setTime(date.getTime() + (60 * 60 * 1000 * 3));
+				$.cookie('promo-artian', true, { expires: date });  // expires after 1 hour
+			});*/
 		};
 
 		var initFormElements = function() {
@@ -133,18 +143,18 @@ define(['jquery','jq_cycle','jq_uniform','bootstrap','fancybox'], function($)
 				chunks[row].height(''); //reset previous height
 				var maxHeight = Math.max.apply(null, chunks[row].map(function ()
 				{
-				    return $(this).height();
+					return $(this).height();
 				}).get());
 				chunks[row].height(maxHeight);
 			}
 		};
 		var chunk = function (arr, len) {
 			var chunks = [],
-		    	i = 0,
-		    	n = arr.length;
+				i = 0,
+				n = arr.length;
 
 			while (i < n) {
-		    	chunks.push(arr.slice(i, i += len));
+				chunks.push(arr.slice(i, i += len));
 			}
 			return chunks;
 		};

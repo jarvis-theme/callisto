@@ -39,6 +39,7 @@ require.config({
 		jq_cycle		: dirTema+'/assets/js/lib/jquery.cycle.all',
 		jq_placeholder	: dirTema+'/assets/js/lib/jquery.placeholder.min',
 		jq_uniform		: dirTema+'/assets/js/lib/jquery.uniform',
+		jquery_cookie	: 'js/jquery.cookie',
 
 		// ROUTE
 		router          : 'js/router',

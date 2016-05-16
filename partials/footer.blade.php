@@ -3,17 +3,17 @@
 	<a href="#" class="back-to-the-top">Kembali ke atas</a>
 	<div class="main-footer">
 		@foreach(all_menu() as $key=>$group)
-            @if($key==0 || $key>2)
+			@if($key==0 || $key>2)
 
-            @else
-            <div class="newsletter">
-	            <div class="main-title">
+			@else
+			<div class="newsletter">
+				<div class="main-title">
 					<p class="custom-font-1">{{$group->nama}}</p>
 				</div>
 
 				<ul>
 				@foreach($group->link as $key=>$link)
-		            @if($group->id==$link->tautanId)
+					@if($group->id==$link->tautanId)
 					<li>
 						<a href="{{menu_url($link)}}">{{$link->nama}}</a>
 					</li>
@@ -47,36 +47,36 @@
 				</a>
 				@endif
 				@if(!empty($kontak->gp))
-                <a target="_blank" href="{{url($kontak->gp)}}" title="Google+">
-                	<span class="fa-stack fa-lg">
-                		<i class="fa fa-circle fa-stack-2x" id="gp"></i>
-                		<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-            		</span>
-        		</a>
-                @endif
-                @if(!empty($kontak->pt))
-                <a target="_blank" href="{{url($kontak->pt)}}" title="Pinterest">
-                	<span class="fa-stack fa-lg">
-            			<i class="fa fa-pinterest fa-2x" id="pt"></i>
-        			</span>
-    			</a>
-                @endif
-                @if(!empty($kontak->tl))
-                <a target="_blank" href="{{url($kontak->tl)}}" title="Tumblr">
-                	<span class="fa-stack fa-lg">
-                		<i class="fa fa-circle fa-stack-2x" id="tl"></i>
-                		<i class="fa fa-tumblr fa-stack-1x fa-inverse"></i>
-            		</span>
-        		</a>
-                @endif
-                @if(!empty($kontak->ig))
-                <a target="_blank" href="{{url($kontak->ig)}}" title="Instagram">
-                	<span class="fa-stack fa-lg">
-                		<i class="fa fa-circle fa-stack-2x" id="ig-circle"></i>
-                		<i class="fa fa-instagram fa-stack-1x fa-inverse" id="ig"></i>
-            		</span>
-        		</a>
-                @endif
+				<a target="_blank" href="{{url($kontak->gp)}}" title="Google+">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" id="gp"></i>
+						<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+				@endif
+				@if(!empty($kontak->pt))
+				<a target="_blank" href="{{url($kontak->pt)}}" title="Pinterest">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-pinterest fa-2x" id="pt"></i>
+					</span>
+				</a>
+				@endif
+				@if(!empty($kontak->tl))
+				<a target="_blank" href="{{url($kontak->tl)}}" title="Tumblr">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" id="tl"></i>
+						<i class="fa fa-tumblr fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+				@endif
+				@if(!empty($kontak->ig))
+				<a target="_blank" href="{{url($kontak->ig)}}" title="Instagram">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" id="ig-circle"></i>
+						<i class="fa fa-instagram fa-stack-1x fa-inverse" id="ig"></i>
+					</span>
+				</a>
+				@endif
 			</p>
 		</div>
 
@@ -89,8 +89,8 @@
 				<p><b>Alamat:</b> <br>{{$kontak->alamat}}</p><br>
 				<p><b>Telepon:</b> <br>{{$kontak->telepon}}</p><br>
 				@if(!empty($kontak->bb))
-                <p><b>PIN BB: </b> <br>{{$kontak->bb}}</p><br>
-                @endif
+				<p><b>PIN BB: </b> <br>{{$kontak->bb}}</p><br>
+				@endif
 				<b>Email:</b> <br><a class="white" href="mailto:{{$kontak->email}}">{{$kontak->email}}</a>
 			@else
 				<p></p>
@@ -101,21 +101,24 @@
 		@if(!empty($bank))
 			@foreach(list_banks() as $value)
 			<a><img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" /></a>
-            @endforeach
-            @foreach(list_payments() as $pay)
-            	@if($pay->nama == 'paypal' && $pay->aktif == 1)
-                <a><img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" /></a>
-                @endif
-                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+			@endforeach
+			@foreach(list_payments() as $pay)
+				@if($pay->nama == 'paypal' && $pay->aktif == 1)
+				<a><img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" /></a>
+				@endif
+				@if($pay->nama == 'ipaymu' && $pay->aktif == 1)
 				<a><img src="{{ URL::to('img/bank/ipaymu.jpg') }}" alt="ipaymu" title="Ipaymu"></a>
-                @endif
-                @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                <a><img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" /></a>
-                @endif
-            @endforeach
-            @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-			<img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku" title="Doku">
-            @endif
+				@endif
+				@if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+				<a><img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" /></a>
+				@endif
+			@endforeach
+			@if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+			<a><img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku" title="Doku"></a>
+			@endif
+			@if(count(list_veritrans()) > 0 && list_veritrans()->status == 1)
+			<a><img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans"></a>
+			@endif
 		@endif
 		</div>
 
@@ -131,4 +134,5 @@
 	</div>
 </div>
 <!-- END .main-footer-wrapper -->
+
 {{pluginPowerup()}}
