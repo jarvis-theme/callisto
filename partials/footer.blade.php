@@ -98,13 +98,11 @@
 		</div>
 
 		<div class="copyright">
-		@if(!empty($bank))
 			@foreach(list_banks() as $value)
 				@if($value->status == 1)
 				<a><img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" /></a>
 				@endif
 			@endforeach
-		@endif
 			@foreach(list_payments() as $pay)
 				@if($pay->nama == 'paypal' && $pay->aktif == 1)
 				<a><img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" /></a>
