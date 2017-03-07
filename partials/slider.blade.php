@@ -2,7 +2,7 @@
 <div class="homepage-slider">
 	<!-- BEGIN  #hompage-slider_content -->
 	<div id="hompage-slider_content">
-		@foreach(slideshow() as $slides)
+		@foreach(slideshow() as $key => $slides)
 		<div class="item">
 			@if(!empty($slides->text))
 			<div class="title">
@@ -37,9 +37,9 @@
 				<td>
 					<a href="#" class="previous">Previous</a>
 					<span id="pager">
+						@for($i=0;$i<=$key;$i++)
 						<a href="#" class="bullet"></a>
-						<a href="#" class="bullet"></a>
-						<a href="#" class="bullet"></a>
+						@endfor
 					</span>
 					<a href="#" class="next">Next</a>
 				</td>
