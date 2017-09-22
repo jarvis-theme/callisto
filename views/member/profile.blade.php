@@ -18,7 +18,7 @@
 				<textarea name="alamat" class="textarea-1" required>{{$user->alamat}}</textarea>
 			</p>
 			<p>
-				<label>Negara* :</label>						  	
+				<label>Negara* :</label>
 				{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara, ($user ? $user->negara :(Input::old("negara")? Input::old("negara") :"")), array('required'=>'', 'id'=>'negara', 'class'=>'opsi'))}}
 			</p>
 			<p>

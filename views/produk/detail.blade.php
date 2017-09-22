@@ -15,40 +15,40 @@
 		<div class="image-wrapper-3">
 			<div id="single-product-slider">
 				@if($produk->gambar1!='')
-			    <div class="image">
+				<div class="image">
 					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
 						<img src="{{product_image_url($produk->gambar1,'large')}}" width="470" alt="{{$produk->nama}}" />
 					</a>
 				</div>
-			  	@endif
-			  	@if($produk->gambar2!='')			  	
-			    <div class="image">
+				@endif
+				@if($produk->gambar2!='')
+				<div class="image">
 					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
 						<img src="{{product_image_url($produk->gambar2,'large')}}" width="470" alt="{{$produk->nama}}" />
 					</a>
 				</div>
-			  	@endif
-			  	@if($produk->gambar3!='')			  	
-			    <div class="image">
+				@endif
+				@if($produk->gambar3!='')
+				<div class="image">
 					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
 						<img src="{{product_image_url($produk->gambar3,'large')}}" width="470" alt="{{$produk->nama}}" />
 					</a>
 				</div>
-			  	@endif
-			  	@if($produk->gambar4!='')			  	
-			    <div class="image">
+				@endif
+				@if($produk->gambar4!='')
+				<div class="image">
 					<a href="{{product_image_url($produk->gambar1,'large')}}" class="fancybox" title="{{$produk->nama}}">
 						<img src="{{product_image_url($produk->gambar4,'large')}}" width="470" alt="{{$produk->nama}}" />
 					</a>
 				</div>
-			  	@endif
+				@endif
 			</div>
 		</div>
 		<div class="clear"></div>
 		<table>
 			<tr>
-				@if($produk->gambar1!='')			  	
-			    <td>
+				@if($produk->gambar1!='')
+				<td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
 							<a href="#">
@@ -57,9 +57,9 @@
 						</div>
 					</div>
 				</td>
-			  	@endif
-			  	@if($produk->gambar2!='')			  	
-			    <td>
+				@endif
+				@if($produk->gambar2!='')
+				<td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
 							<a href="#">
@@ -68,9 +68,9 @@
 						</div>
 					</div>
 				</td>
-			  	@endif
-			  	@if($produk->gambar3!='')			  	
-			    <td>
+				@endif
+				@if($produk->gambar3!='')
+				<td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
 							<a href="#">
@@ -79,9 +79,9 @@
 						</div>
 					</div>
 				</td>
-			  	@endif
-			  	@if($produk->gambar4!='')			  	
-			    <td>
+				@endif
+				@if($produk->gambar4!='')
+				<td>
 					<div class="image-wrapper-4 active">
 						<div class="image">
 							<a href="#">
@@ -90,7 +90,7 @@
 						</div>
 					</div>
 				</td>
-			  	@endif
+				@endif
 			</tr>
 		</table>
 	</div>
@@ -113,14 +113,14 @@
 				<div class="item">
 					<label>Jumlah :</label>
 					<div class="select">
-          				<input type="text" class="input-text-1" name="qty" value="1">
-          			</div>
-          			<div class="clear"></div><br>
-          		</div>
-				@if($opsiproduk->count()>0)		
+						<input type="text" class="input-text-1" name="qty" value="1" min="1" pattern="[0-9]">
+					</div>
+					<div class="clear"></div><br>
+				</div>
+				@if($opsiproduk->count()>0)
 					<div class="item">
 						<label>Pilih Opsi:</label>
-						<div class="select">	
+						<div class="select">
 							<select name="opsiproduk">
 								<option value="">-- Pilih Opsi --</option>
 								@foreach ($opsiproduk as $key => $opsi)
@@ -184,12 +184,12 @@
 				
 				<div class="image-wrapper-3 homeproduct">
 					@if(is_outstok($myproduk))
-                    {{is_outstok($myproduk)}}
-                    @elseif(is_terlaris($myproduk))
-                    {{is_terlaris($myproduk)}}
-                    @elseif(is_produkbaru($myproduk))
-                    {{is_produkbaru($myproduk)}}
-                    @endif
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/stok-badge.png" class="outstok-badge">
+					@elseif(is_terlaris($myproduk))
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/terlaris-badge.png" class="best-badge">
+					@elseif(is_produkbaru($myproduk))
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/new-badge.png" class="new-badge">
+					@endif
 					<div class="image">
 						<div class="image-overlay-1 trans-1">
 							<table>
@@ -218,10 +218,10 @@
 @endif
 <div class="clear"></div>
 <div class="powerup">
-    <div class="cekresi">
-        {{pluginSidePowerup()}}
-    </div>
-    <br>
+	<div class="cekresi">
+		{{pluginSidePowerup()}}
+	</div>
+	<br>
 </div>
 <div class="clear"></div>
 <br><br><br>

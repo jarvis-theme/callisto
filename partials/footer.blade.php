@@ -77,6 +77,11 @@
 					</span>
 				</a>
 				@endif
+				@if(!empty($kontak->picmix))
+				<a target="_blank" href="{{url($kontak->picmix)}}" title="Picmix">
+					<img class="picmix" src="//d3kamn3rg2loz7.cloudfront.net/blogs/event/icon-picmix.png">
+				</a>
+				@endif
 			</p>
 		</div>
 
@@ -118,7 +123,7 @@
 			<a><img src="{{ URL::to('img/bank/doku.jpg') }}" alt="doku" title="Doku"></a>
 			@endif
 			@if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-			<a><img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans"></a>
+			<a><img class="midtrans" src="{{url('img/bank/midtrans.png')}}" alt="Midtrans" title="Midtrans"></a>
 			@endif
 		</div>
 
@@ -126,7 +131,7 @@
 			<table>
 				<tr>
 					<td>
-						<span>Copyright &copy; {{date('Y')}} {{ Theme::place('title') }}. Powered by <a target="_blank"  href="http://jarvis-store.com">Jarvis Store</a></span>
+						<span>Copyright &copy; {{date('Y')}} {{ Theme::place('title') }}. Powered by <a target="_blank"  href="//jarvis-store.com">Jarvis Store</a></span>
 					</td>
 				</tr>
 			</table>

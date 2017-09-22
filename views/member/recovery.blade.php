@@ -7,8 +7,8 @@
 	<!-- BEGIN .single-full-width -->
 	<div class="single-full-width customer">
 		<div class="login">
-	  		{{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
-	  			<p>
+			{{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
+				<p>
 					<label class="control-label" for="inputPassword">Password Baru</label>
 					<input type="password" name="password" class="input-text-1" id="inputPassword" required>
 				</p>

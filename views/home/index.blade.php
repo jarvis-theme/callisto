@@ -18,11 +18,11 @@
             <div class="item-block-1">
                 <div class="image-wrapper-3 homeproduct">
                     @if(is_outstok($myproduk))
-                    {{is_outstok($myproduk)}}
+                    <img src="{{Config::get('aws.cdn2.endpoint')}}/images/stok-badge.png" class="outstok-badge">
                     @elseif(is_terlaris($myproduk))
-                    {{is_terlaris($myproduk)}}
+                    <img src="{{Config::get('aws.cdn2.endpoint')}}/images/terlaris-badge.png" class="best-badge">
                     @elseif(is_produkbaru($myproduk))
-                    {{is_produkbaru($myproduk)}}
+                    <img src="{{Config::get('aws.cdn2.endpoint')}}/images/new-badge.png" class="new-badge">
                     @endif
                     <div class="image">
                         <div class="image-overlay-1 trans-1">

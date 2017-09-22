@@ -1,7 +1,7 @@
 <!-- BEGIN .catalog -->
 <div class="catalog">
 	<div class="main-title">
-        <p>
+		<p>
 			{{breadcrumbProduk(null,'; <span>/</span>',';', true, @$category, @$colection)}}
 		</p>
 
@@ -15,8 +15,8 @@
 			<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
 				<option value="{{url('produk')}}">Semua produk</option>
 				@foreach(list_category() as $key => $menu)
-	    			@if($menu->parent == 0)
-	        			@if(count($menu->anak) == 0)
+					@if($menu->parent == 0)
+						@if(count($menu->anak) == 0)
 							<option value="{{category_url($menu)}}" {{URL::current() == category_url($menu) ? 'selected="selected"' : ''}}>{{$menu->nama}}</option>
 						@elseif(count($menu->anak) >= 1)
 							<option value="{{category_url($menu)}}" {{URL::current() == category_url($menu) ? 'selected="selected"' : ''}}>{{$menu->nama}}</option>
@@ -31,8 +31,8 @@
 								@endif
 							@endforeach
 						@endif
-	    			@endif
-        		@endforeach
+					@endif
+				@endforeach
 			</select>
 		</div>
 		<!-- <label class="label-sort">Sort by:</label>
@@ -48,21 +48,21 @@
 
 	<div class="items-wrapper">
 		<div class="items">
-            @foreach(list_product(null, @$category) as $myproduk)
+			@foreach(list_product(null, @$category) as $myproduk)
 			<div class="item-block-2">
 				@if($myproduk->koleksiId!=0)
-                <!-- <div class="item-tag tag-off custom-font-1">
-                    <span>{{$myproduk->koleksi->nama}}</span>
-                </div> -->
-                @endif
+				<!-- <div class="item-tag tag-off custom-font-1">
+					<span>{{$myproduk->koleksi->nama}}</span>
+				</div> -->
+				@endif
 				<div class="image-wrapper-3 homeproduct">
 					@if(is_outstok($myproduk))
-                    {{is_outstok($myproduk)}}
-                    @elseif(is_terlaris($myproduk))
-                    {{is_terlaris($myproduk)}}
-                    @elseif(is_produkbaru($myproduk))
-                    {{is_produkbaru($myproduk)}}
-                    @endif
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/stok-badge.png" class="outstok-badge">
+					@elseif(is_terlaris($myproduk))
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/terlaris-badge.png" class="best-badge">
+					@elseif(is_produkbaru($myproduk))
+					<img src="{{Config::get('aws.cdn2.endpoint')}}/images/new-badge.png" class="new-badge">
+					@endif
 					<div class="image">
 						<div class="image-overlay-1 trans-1">
 							<table>
@@ -95,9 +95,9 @@
 </div>
 <!-- END .catalog -->
 <div class="powerup">
-    <div class="cekresi">
-        {{pluginSidePowerup()}}
-    </div>
-    <br>
+	<div class="cekresi">
+		{{pluginSidePowerup()}}
+	</div>
+	<br>
 </div>
 <br><br><br>
