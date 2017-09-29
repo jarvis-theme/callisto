@@ -1332,6 +1332,7 @@ form[name="order"] > input[name="SAVE"]:hover {
 .picmix:hover { opacity: 1; }
 .midtrans { padding: 8px; background: #fbfbfb; }
 .new-badge,.best-badge,.outstok-badge { width: 80px; height: initial; }
+img.blog { width: 100%; }
 
 
 @media screen and (max-width: 480px){
